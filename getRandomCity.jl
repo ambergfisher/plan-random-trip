@@ -7,12 +7,12 @@ using Random
 
 # for repeatability but can be commented out if you want
 # different results every time you try
-Random.seed!(42)
+#Random.seed!(42)
 
 function main()
     file = CSV.File("simplemaps_uscities_basicv1.73/uscities.csv") |> DataFrame
     file = file[:, 1:3]
-    println("Cities Loaded!")
+    println("Cities dataframe loaded!")
 
     numCities = parse(Int64, ARGS[1])
     cities = DataFrame(city = String[], state_id = String[])

@@ -3,8 +3,7 @@ Ever want to roadtrip around the US but have no idea where to go? Do you want to
 
 # Current Instructions for Use
 1. Clone the repository using ```git clone https://github.com/ambergfisher/planRandomTrip```
-2. If you don't want the same results every time, comment out ```Random.seed!(42)``` on line 10 of getRandomCity.jl. Otherwise, continue to step 3.
-3. In the command line, run ```julia getRandomCity.jl [number of cities]``` from inside the repo folder, where ```[number of cities]``` is a whole number.
+2. In the command line, run ```julia getRandomCity.jl [number of cities]``` from inside the repo folder, where ```[number of cities]``` is a whole number.
 
 # Stages of development
 1. (current) Using Julia with some CSV reading to pick random towns or cities from around the US and just printing to terminal.
