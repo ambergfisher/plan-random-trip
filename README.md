@@ -18,3 +18,6 @@ Ever want to roadtrip around the US but have no idea where to go? Do you want to
 
 # Notes
 1. In the current iteration, there's a function called getRandomDumb() that implements the method that inspired this project. It is almost certainly the worst possible way that you could get a result but I thought it was pretty funny and took minimal time to implement. View the video demonstrating what the algorithm is at https://vm.tiktok.com/ZMeL7Cdox
+
+# Data Source
+All city data comes from https://simplemaps.com/data/us-cities . Thank you to them for providing the Free US Cities Database to all!
