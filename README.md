@@ -1,7 +1,7 @@
 # Plan a random trip around the United States!
 Ever want to roadtrip around the US but have no idea where to go? Do you want to visit towns off the beaten path? Is spontaneity your thing? Then this is the tool for you! We will give you a list of random towns across America that you can turn into your roadtrip map.
 
-# Current Instructions for Use
+# Current Instructions for Use (must have Julia installed)
 1. Clone the repository using ```git clone https://github.com/ambergfisher/planRandomTrip```
 2. In the command line, run ```julia getRandomCity.jl [number of cities]``` from inside the repo folder, where ```[number of cities]``` is a whole number.
 
