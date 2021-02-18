@@ -1,30 +1,46 @@
-# using Pkg
-# Pkg.add("CSV")
-# Pkg.add("DataFrames")
+using Pkg
+# comment out Pkg.add() lines for speed once already added
+Pkg.add("SQLite")
+Pkg.add("CSV")
+Pkg.add("DataFrames")
+using SQLite
+using Random
 using CSV
 using DataFrames
-using Random
 
 # for repeatability but can be commented out if you want
 # different results every time you try
 #Random.seed!(42)
 
-function main()
-    file = CSV.File("simplemaps_uscities_basicv1.73/uscities.csv") |> DataFrame
-    file = file[:, 1:3]
-    println("Cities dataframe loaded!")
+# Smart for the best way, Dumb for the Tiktok way
+global mode = "Smart"
 
+function main()
     numCities = parse(Int64, ARGS[1])
-    cities = DataFrame(city = String[], state_id = String[])
-    for i in 1:numCities
-        city = getRandomCity(file)
-        push!(cities, city)
+
+    if mode == "Smart"
+        db = SQLite.DB("cities.db")
+        println("Cities database loaded!")
+
+        cities = getCitiesList(db, numCities)
+    elseif mode == "Dumb"
+        file = CSV.File("simplemaps_uscities_basicv1.73/uscities.csv") |> DataFrame
+        file = file[:, 1:3]
+        println("Cities dataframe loaded!")
+
+        cities = DataFrame(city = String[], state_id = String[])
+        for i in 1:numCities
+            city = getRandomCity(file)
+            push!(cities, city)
+        end
     end
+    
     println(cities)
 end
 
 # finds all the cities where city != city_ascii
 # this ends up being all towns with Spanish names
+# current implementation only works in "Dumb" mode as it takes in a DataFrame
 function difference(file)
     diff = DataFrame(city = String[], city_ascii = String[], state_id = String[])
     for i in 1:size(file, 1)
@@ -36,9 +52,11 @@ function difference(file)
 end
 
 # the "right" way to do this
-function getRandomCity(file)
-    index = rand(1:size(file,1))
-    return file[index, [1,3]]
+function getCitiesList(db, numCities)
+    return DBInterface.execute(db, "SELECT city, state_id
+                                    FROM cities
+                                    ORDER BY RANDOM()
+                                    LIMIT $numCities") |> DataFrame
 end
 
 # really dumb way that I saw on tiktok and thought was funny
