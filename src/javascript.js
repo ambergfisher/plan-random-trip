@@ -1,3 +1,0 @@
-function getCity() {
-  return "Melbourne"
-}
