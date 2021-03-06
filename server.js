@@ -18,7 +18,7 @@ connection.once("open", function () {
   console.log("MongoDB database connection established successfully");
 });
 
-app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
+app.use(express.static(path.join(__dirname, "client/build")));
 
 citiesRoutes.route("/").get(function (req, res) {
   City.find(function (err, cities) {
@@ -73,7 +73,7 @@ citiesRoutes.route("/add").post(function (req, res) {
 app.use("/cities", citiesRoutes);
 
 app.get('*', function(request, response) {
-    response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
+    response.sendFile(path.join(__dirname, '/client/build/index.html'));
 });
 
 app.listen(PORT, function () {
