@@ -47,13 +47,7 @@ export default class Multiple extends Component {
   }
 
   geoCodePlace(data, place) {
-    axios
-      .get(
-        "https://maps.googleapis.com/maps/api/geocode/json?address=" +
-          place +
-          "&key=" +
-          process.env.REACT_APP_GOOGLE_API_KEY
-      )
+    axios.get(`"https://maps.googleapis.com/maps/api/geocode/json?address=${place}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`)
       .then((result) => {
         const cities = this.state.cities.concat({
           city: data.city_ascii,
@@ -79,7 +73,7 @@ export default class Multiple extends Component {
   }
 
   getCities(numCities) {
-    axios.get(`http://localhost:4000/cities/multiple/${(numCities > 1 ? numCities : 1)}`).then((response) => {
+    axios.get(`api/cities/multiple/${(numCities > 1 ? numCities : 1)}`).then((response) => {
       for (let i = 0; i < response.data.length; i++) {
         let place = encodeURIComponent(
           response.data[i].city_ascii + " " + response.data[i].state_id + " USA"
