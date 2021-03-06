@@ -4,7 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const citiesRoutes = express.Router();
 require('dotenv').config();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 
 let City = require("./cities-model");
 
@@ -17,6 +17,8 @@ const connection = mongoose.connection;
 connection.once("open", function () {
   console.log("MongoDB database connection established successfully");
 });
+
+app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
 citiesRoutes.route("/").get(function (req, res) {
   City.find(function (err, cities) {
@@ -69,6 +71,10 @@ citiesRoutes.route("/add").post(function (req, res) {
 });
 
 app.use("/cities", citiesRoutes);
+
+app.get('*', function(request, response) {
+    response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
+});
 
 app.listen(PORT, function () {
   console.log("Server is running on Port: " + PORT);
