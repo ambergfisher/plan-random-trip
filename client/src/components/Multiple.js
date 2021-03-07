@@ -47,7 +47,7 @@ export default class Multiple extends Component {
   }
 
   geoCodePlace(data, place) {
-    axios.get(`"https://maps.googleapis.com/maps/api/geocode/json?address=${place}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`)
+    axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${place}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`)
       .then((result) => {
         const cities = this.state.cities.concat({
           city: data.city_ascii,
