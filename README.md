@@ -1,14 +1,17 @@
 # Plan a random trip around the United States!
-Ever want to roadtrip around the US but have no idea where to go? Do you want to visit towns off the beaten path? Is spontaneity your thing? Then this is the tool for you! We will give you a list of random towns across America that you can turn into your roadtrip map.
+Ever want to roadtrip around the US but have no idea where to go? Do you want to visit towns off the beaten path? Is spontaneity your thing? Then this is the tool for you! We will give you a list of random towns across America that you can turn into your roadtrip map. Currently being hosted with Heroku [here](https://plan-random-trip.herokuapp.com/). (Note: This will take about 5-15 seconds to load as it is hosted with a free plan)
 
-# Current Instructions for Use (must have Julia installed)
-1. Clone the repository using ```git clone https://github.com/ambergfisher/plan-random-trip```
-2. Run your local server within the repository folder and go to ```http://localhost:[your-port-num]```.
-
-If you don't know how to run a local server, here is how I do it:
-1. Run ```npm install -g http-server``` to install Node http-server.
-2. Navigate to the repo in your terminal and run ```http-server```.
-3. In your browser, go to ```https://localhost:[port]```. The default port should be ```8080```.
+# How to run locally (requires npm and node be pre-installed)
+1. Clone this repo with `git clone https://github.com/ambergfisher/plan-random-trip`
+2. Install Nodemon globally (`sudo npm install -g nodemon`). This will be used for the backend server.
+3. Set up a MongoDB database locally or through [MongoDB cloud](https://www.mongodb.com/) and import `cities.json` from this repo into it.
+4. Get an API key for [Google Maps API](https://developers.google.com/maps).
+5. Create `.env` files in both the root and client directories and add the following:
+    - Root .env: `MONGO_URI=[MongoDB database url]`
+    - Client .env: `REACT_APP_GOOGLE_API_KEY=[Google Maps API key]`
+6. From the root folder, run `npm install` and then `nodemon server`. Your local backend server should be started. If it connected to your database correctly, it should tell you in the output.
+7. From the client folder in a new terminal window, run `npm install`, then `npm start`. Your frontend should now be available for viewing at `localhost:3000`.
+    
 
 # Stages of development
 1. (previous) Using Julia with some CSV reading to pick random towns or cities from around the US and just printing to terminal.
@@ -16,8 +19,8 @@ If you don't know how to run a local server, here is how I do it:
 3. (current) Creating a website that has a user interface for the city names as well as a map with points of all the cities chosen.
 
 # Notes
-1. You can still run the command line Julia files from inside the ```cmd-line``` folder. To create the database, run ```julia createDatabase.jl```. Then, to get the cities, run ```julia getRandomCity.jl [n]``` where ```[n]``` is how many cities you want.
-2. In the previous (command line) iteration, there's a function called getRandomDumb() that implements the method that inspired this project. It is almost certainly the worst possible way that you could get a result, but I thought it was pretty funny and took minimal time to implement. View the video demonstrating the algorithm at https://vm.tiktok.com/ZMeL7Cdox
+1. You can still run the command line Julia files from the `initial-stage-terminal` branch.
+2. In the previous (command line) iteration, there's a function called getRandomDumb() that implements the method that inspired this project. It is almost certainly the worst possible way that you could get a result, but I thought it was pretty funny and took minimal time to implement. View [this video](https://vm.tiktok.com/ZMeL7Cdox) demonstrating the "algorithm".
 
 # Future add-ons?
 1. Mapping out potential routes between cities
