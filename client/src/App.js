@@ -26,9 +26,6 @@ export default class App extends Component {
           <Switch>
             <Route path="/home" component={Home}/>
             <Route path="/get-multiple" component={Multiple}/>
-            <Route exact path="/" >
-              <Redirect to="/home" />
-            </Route>
           </Switch>
       </Router>
     );
