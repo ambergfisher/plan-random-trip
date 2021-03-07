@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const citiesRoutes = express.Router();
+const path = require('path');
 require('dotenv').config();
 const PORT = process.env.PORT || 5000;
 
@@ -17,8 +18,6 @@ const connection = mongoose.connection;
 connection.once("open", function () {
   console.log("MongoDB database connection established successfully");
 });
-
-app.use(express.static(path.join(__dirname, "client/build")));
 
 citiesRoutes.route("/").get(function (req, res) {
   City.find(function (err, cities) {
@@ -69,6 +68,10 @@ citiesRoutes.route("/add").post(function (req, res) {
       res.status(400).send("adding new city failed");
     });
 });
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 app.use("/cities", citiesRoutes);
 
