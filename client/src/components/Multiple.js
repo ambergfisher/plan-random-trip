@@ -73,7 +73,7 @@ export default class Multiple extends Component {
   }
 
   getCities(numCities) {
-    axios.get(`${process.env.REACT_APP_BASE_URL}/cities/multiple/${(numCities > 1 ? numCities : 1)}`).then((response) => {
+    axios.get(`/cities/multiple/${(numCities > 1 ? numCities : 1)}`).then((response) => {
       for (let i = 0; i < response.data.length; i++) {
         let place = encodeURIComponent(
           response.data[i].city_ascii + " " + response.data[i].state_id + " USA"

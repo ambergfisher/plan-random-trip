@@ -37,7 +37,7 @@ export default class Home extends Component {
   }
 
   getCity() {
-    axios.get(`${process.env.REACT_APP_BASE_URL}/cities/single`).then((response) => {
+    axios.get(`/cities/single`).then((response) => {
       let place = encodeURIComponent(response.data.city_ascii + " " + response.data.state_id + " USA")
       console.log(response)
       axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${place}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`)
