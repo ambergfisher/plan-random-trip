@@ -1,5 +1,8 @@
 # Plan a random trip around the United States!
-Ever want to roadtrip around the US but have no idea where to go? Do you want to visit towns off the beaten path? Is spontaneity your thing? Then this is the tool for you! We will give you a list of random towns across America that you can turn into your roadtrip map. Currently being hosted with Heroku [here](https://plan-random-trip.herokuapp.com/). (Note: This will take about 5-15 seconds to load as it is hosted with a free plan)
+Ever want to roadtrip around the US but have no idea where to go? Do you want to visit towns off the beaten path? Is spontaneity your thing? Then this is the tool for you! We will give you a list of random towns across America that you can turn into your roadtrip map. 
+
+# Currently being hosted with Heroku [here](https://plan-random-trip.herokuapp.com/). 
+(Note: This will take about 5-15 seconds to load as it is hosted with a free plan)
 
 # How to run locally (requires npm and node be pre-installed)
 1. Clone this repo with `git clone https://github.com/ambergfisher/plan-random-trip`
